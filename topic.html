@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Angeles Lakers Roster</title>
+    <link rel="stylesheet" href="./_css/bootstrap.min.css">
+    <script src="./_js/jquery.min.js"></script>
+    <script src="./_js/popper.min.js"></script>
+    <script src="./_js/bootstrap.min.js"></script>
+    <link rel="icon" href="./img/goodd.jpeg" type="image/gif">
+    <link rel="stylesheet" href="./font-awesome-4.7.0拷貝/css/font-awesome.min.css">
+    <!-- <script src="./_js/jquery-3.4.1.js"></script> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container-fluidd{
+            background-color: #070606;
+            width: 100%;
+            height: 100%;
+             /* border: yellowgreen 5px solid;  */
+        }
+        .navbar{
+            width: 100%;
+            height: 70px;
+            /* border: 1px solid red; */
+            padding: 0 10px 0 10px;
+            background-color: rgb(14, 7, 7);
+            position: fixed;top: 0px; 
+            transition: top 0.4s ease-in-out;
+            box-shadow: 0 10px 18px rgba(185, 184, 184, 0.2);
+        }
+        .navbar .logo img{
+            height: 60px;
+            width: 100px;
+            vertical-align: middle ;
+            margin-top: 5px;
+            margin-left: 18px;
+             /* position: absolute;   */
+        }
+        .container-fluidd .navbar nav{
+            margin: 0 auto; 
+        }
+        .fa-bars{
+          display: none;  
+          color: rgb(199, 25, 25);
+          font-size: 30px;
+        }
+        #burger{
+          display: none;
+        }
+        @media screen and (max-width: 650px) {
+          .fa-bars{
+              cursor: pointer;
+              display: block;
+              margin-bottom: 50px;
+            }
+            .navtop a{
+              display: none;
+            }
+            .side{
+              display: none;
+            }
+            .logo{
+              display: none;
+            }
+            #burger:checked + .navtop a{
+              display: block;
+              position: relative;
+              top: 80px;
+              left: -200px;
+            }
+            .navbar .navtop a:before,
+            .navbar .navtop a::after{
+              display: none;
+            }
+        }
+        /* 導覽列隱藏 */
+        .hideUp .navbar{
+          top: -70px;
+        }
+        /* 開門效果 */
+        .container-fluidd .navbar .navtop a{
+          padding:4px 20px;
+	        height:40px;
+	        line-height:40px;
+	        position:relative;
+	        /* top:1px; */
+	        color: #FF0;
+	        text-shadow:0 0 10px #000;
+	        text-decoration:none;
+	        background-image: -webkit-radial-gradient(50% 50%, circle, #666 0%, #333 100%);
+          box-shadow:0 0 5px #000 inset;
+        }
+        .navbar .navtop a:before,
+        .navbar .navtop a::after{
+          content:attr(alt);
+          position:absolute;
+	        z-index:2;
+	        left:0;
+	        top:0;
+	        height:20px;
+	        overflow:hidden;
+	        padding:0  20px;
+          margin-top: -9px;
+	        color:#FFF;
+          transition:.3s;
+          text-shadow:0 0 5px #000, 0 0 10px #000, 0 0 10px #000, 0 0 10px #000;
+        }                    
+        .navbar .navtop a:before{
+          background-color:rgb(21, 21, 22);
+          transform-origin:center center -20px;
+	        transform:perspective(200px) rotateX(0deg) translateZ(-20px);
+        }
+        .navbar .navtop a:after{
+          top:20px;
+	        line-height:2px;
+	        background-color:rgb(21, 21, 22);
+          transform-origin:center center -20px;
+	        transform:perspective(200px) rotateX(0deg) translateZ(-20px);
+        }
+        .navbar .navtop a:hover:before{
+          transform:perspective(200px) rotateX(45deg);
+	        box-shadow:0 5px 5px rgb(0, 0, 0);
+          }
+        .navbar .navtop a:hover:after{
+          transform:perspective(200px) rotateX(-45deg);
+	        box-shadow:0 -5px 5px rgb(0, 0, 0);
+        }
+        /* 開門效果＾ */
+        
+        /* .navtop a:hover{
+          border-radius: 100px;
+          border-bottom: rgb(241, 179, 45) 2px solid;  
+           transform: translateY(-8px);
+          transition: 5s;
+           background-color: rgb(46, 20, 218);  
+          background-color: rgb(40, 9, 90);
+           padding: 5px 10px; 
+        } */
+        .side{
+          /* border:  1px solid rgb(241, 179, 45); */
+          background-color: rgb(14, 13, 13);
+          padding: 2px;
+          
+        }
+        @keyframes apple {
+            0% {
+                transform: scale(0);
+               
+            }
+            50% {
+              transform: scale(1);
+                background-color: rgb(255, 217, 45);
+               
+            }
+           
+            100%{
+              transform: scale(0);
+                background-color: rgb(2, 2, 2);
+            }
+            
+        }
+        .side {
+            animation-name: apple;
+            animation-duration: 4s;
+            animation-iteration-count: 10;
+        }
+        .container-fluidd .head{
+            width: 100%;
+            height: 600px;
+            /* border: 1px solid yellow;  */
+            margin-top: 70px;
+            
+        }
+        .headimg{
+            /* position: relative;  */
+            /* border: violet 2px solid; */
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .head .headimg:hover{
+            opacity: 1;
+            transform: scale(1.05);
+            transition: 0.7s;
+        }
+        .head>h1{
+            position: absolute;
+            top: 300px;
+            left: 0;
+            color: white;
+            font-weight: bolder;
+        }
+        p{
+            position: absolute;
+            top: 380px;
+            left: 0;
+            color: white;
+        }
+        .side h5{
+            margin: auto 0;
+            color: rgb(34, 33, 32);
+        }
+
+
+        /* 球員介紹欄 css*/
+        .wrap{
+          width: 100%;
+          display: flex; 
+          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: repeat(3,1fr);
+          margin-top: 108px;
+          margin-bottom: 50px;
+        }
+        .tony{
+          width: 100%;
+          height: 100%;
+          /* border: solid 0.1px red; */
+          position: relative;
+          /* display: flex; */
+          
+          border-right: solid 1px rgb(82, 80, 80);
+          
+          
+        }
+        .tony>img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          vertical-align: middle;
+        }
+        .tony>.txt{
+          /* border: solid 1px green; */
+          position: absolute;
+          top: 0;
+          right: 0; 
+          bottom: 0; 
+          left: 0px;
+          /* padding-top: 550px; */
+          background-color: rgba(0,0,0,.3 ); 
+          opacity: 0; 
+          text-align: center;
+          transition: .3s;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+        
+        .tony:hover .txt{
+          color: white;
+          opacity: 1;
+        }
+        .bd-example{
+          margin-top: 70px;
+        }
+        /* 教練團 */
+        .myCoach{
+          margin-top: 80px;
+        }
+        #coach{
+          margin: 90px 0 30px 0;
+        }
+        .mycoimg{
+          object-fit: cover;
+        }
+        .myfont{
+          position: absolute;
+          color: rgb(255, 255, 255);
+          top: 200px;
+          left: 150px;
+        }
+
+        #co1{
+          /* border-right: solid 1px rgb(82, 80, 80);   */
+          color: rgb(182, 181, 181);
+        }
+        #co2{
+          /* border-right: solid 1px rgb(82, 80, 80); */
+          border-left: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+        }
+        #co3{
+          /* border-right: solid 1px rgb(82, 80, 80); */
+          border-left: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+        }
+        #co4{
+          border-left: solid 1px rgb(82, 80, 80); 
+          color: rgb(182, 181, 181);
+        }
+        #co5{
+          /* border-right: solid 1px rgb(82, 80, 80); */
+          border-top: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+        }
+        #co6{
+          /* border-right: solid 1px rgb(82, 80, 80); */
+          border-left: solid 1px rgb(82, 80, 80);
+          border-top: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+        }
+        #co7{
+          border-left: solid 1px rgb(82, 80, 80);
+          /* border-right: solid 1px rgb(82, 80, 80); */
+          border-top: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+          border-bottom: solid 1px rgb(82, 80, 80);
+        }
+        #co8{
+          border-left: solid 1px rgb(82, 80, 80); 
+          border-top: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+          border-bottom: solid 1px rgb(82, 80, 80);
+        }
+        #co9{
+          /* border-right: solid 1px rgb(82, 80, 80); */
+          border-top: solid 1px rgb(82, 80, 80);
+          border-bottom: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+        }
+        #co10{
+          border-right: solid 1px rgb(82, 80, 80);
+          border-left: solid 1px rgb(82, 80, 80);
+          border-top: solid 1px rgb(82, 80, 80);
+          border-bottom: solid 1px rgb(82, 80, 80);
+          color: rgb(182, 181, 181);
+        }
+
+        /* 聚光燈 */
+        .spotlight{
+          overflow: auto;
+          width: 100%;
+          font-size: 15px;
+        }
+        .spotlight{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgb(0, 0, 0);
+        }
+        .spotlight>h1{
+            /* overflow:scroll; */
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 8rem;
+            letter-spacing: -0.9rem;
+            position: relative;
+        }
+        .spotlight>h1::after{
+            content: attr(data-spotlight);
+            color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-clip-path: ellipse(100px 100px at 50% 50%);
+            clip-path: ellipse(100px 100px at 0% 50%);
+            animation:  5s spotlight infinite;
+            background-image: url(./img/漸層圖.jpeg);
+            background-size: 150%;
+            background-position:center center ;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        @keyframes spotlight{
+            0%{
+                -webkit-clip-path: ellipse(100px 100px at 50% 50%);
+                clip-path: ellipse(100px 100px at 0% 50%);
+            }
+
+            50%{
+                -webkit-clip-path: ellipse(100px 100px at 50% 50%);
+                clip-path: ellipse(100px 100px at 100% 50%);
+            }
+
+            100%{
+                -webkit-clip-path: ellipse(100px 100px at 50% 50%);
+                clip-path: ellipse(100px 100px at 0% 50%);
+            }
+        }
+        /* 球隊歷史 */
+        .mywrap{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+        }
+        .fixed{
+          width: 100%;
+	        height: 100vh;
+	        background-color: #666;
+	        color: #fff;
+	        font-size: 20px;
+	        line-height: 100vh;
+	        text-align: center;
+	        background-repeat: no-repeat;
+	        background-position: center;
+	        background-size: cover;
+	        background-attachment: fixed;
+        }
+        .topic1{ 
+	        background-image: url(./img/\ Road\ \ to\ \ Championspng.png); 
+        }
+        .topic2{ 
+	        background-image: url(./img/Los\ Angeles.png); 
+          background-size: contain;
+          margin-top: 10px;
+        }
+        .topic3{ 
+	        background-image: url(./img/Showtime.png); 
+          background-size: contain;
+        }
+        .topic4{
+          background-image: url(./img/Post-Showtime.png); 
+          background-size: contain;
+        }
+        .topic5{
+          background-image: url(./img/Three-Peat.png); 
+          background-size: contain;
+        }
+        .topic6{
+          background-image: url(./img/Back\ to\ Back.png); 
+          background-size: contain;
+        }
+        .topic7{
+          background-image: url(./img/Present.png); 
+          background-size: contain;
+        }
+        .topic8{
+          background-image: url(./img/The\ 2020\ NBA\ Championship\ Ring.png); 
+          background-size: contain;
+          
+        }
+        /* 交錯圖層 */
+        .wrap-2{
+	        width: 100%;
+	        margin: auto;
+          margin:50px 0px 0px 0px;
+          background-color: rgb(255, 255, 255);
+        }
+        .wrap-2::after,
+        .wrap-2::before{
+          content: "";
+          display: flex;
+          /* align-items: center;
+          justify-content: center; */
+          margin: auto;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 1px;
+          background-color: rgba(80, 40, 125, 1);
+          /* margin-left: 280px; */
+          margin-bottom: 50px;
+        }
+        .item{
+        	display: flex;
+        	align-items: center;
+        	margin-bottom: 70px;
+            margin:0 70px 70px 70px ;
+        	font-family: 'Noto Sans TC', sans-serif;
+        }
+        .item h6{ 
+        	font-weight: 900;
+        	margin-bottom: 1em;
+            width: 80%;
+        }
+        .item h6{ 
+        	font-weight: 300;
+        	line-height: 1.6;
+        }
+        .item .pic{
+          height: 350px;
+        	width: 55%;
+        	flex-shrink: 0;
+        }
+        .item .pic img{
+          height: 100%;
+        	width: 100%;
+        	vertical-align: middle;
+          object-fit: cover;
+        }
+        .item .txt{
+        	width: 55%;
+        	flex-shrink: 0;
+        	padding: 50px 30px;
+        	box-sizing: border-box;
+        	position: relative;
+        	z-index: 1;
+        }
+        .item > :first-child{
+        	margin-right: -10%;
+        }
+        .item:nth-child(1) .txt{
+        	background-color: rgba(240, 174, 193, .8);
+        }
+        .item:nth-child(2) .txt{
+        	background-color: rgba(42, 253, 208, .8);
+        }
+        .item:nth-child(3) .txt{
+        	background-color: rgba(254, 201, 121, .8);
+        }
+        .item:nth-child(4) .txt{
+        	background-color: rgba(149, 219, 214, .8);
+        }
+
+
+        .wrap-3{
+	        width: 100%;
+	        margin: auto;
+          margin:50px 0px 0px 0px;
+          background-color: rgb(255, 255, 255);
+        }
+        .item-2 {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 60px 0 10px 0;
+        }
+        .item-2 .pic {
+          width: 100%;
+        }
+        .item-2 .pic img {
+          width: 100%;
+        }
+        .item-2::after,
+        .item-2::before{
+          content: "";
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 1px;
+          background-color: rgba(80, 40, 125, 1);
+          margin-bottom: 50px;
+        }
+        .item-2 .txt-tit{
+          width: 100%;
+          text-align: center;
+        }
+        .txt-tit>h4{
+          color: rgb(84, 49, 131);
+        }
+        .txt-In{
+          margin: 30px 8% 50px 8%;
+          line-height: 30px;
+          font-weight:bold;
+        }
+
+        /* 置頂欄 */
+        .topp{
+          position: fixed;
+          right: 10px;
+          bottom: 20px;
+          background-color: rgb(243, 239, 243);
+          width: 55px;
+          height: 55px;
+          background-position: center;
+          opacity: 0.3;
+          transition: .4s;
+          border-radius: 8px;
+          z-index: 99;
+          display: none;
+          
+        }
+        
+        .topp:hover{
+          opacity: 0.7;
+          transform: translateY(-9px);
+          background-color: rgb(56, 6, 136);
+          border: 2px solid rgb(255, 218, 9);
+        }
+        
+        .main-footer{
+          width: 100%;
+          height: 300px;
+          padding-top: 10px;
+          margin-top: 30px;
+          background-color: rgb(12, 12, 12);
+          border-top: rgb(63, 60, 57) 1px solid;
+        }
+        .cat{
+          /* border: tomato 1px solid; */
+          width: 90%;
+          height: 250px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto; 
+        }
+        .item22{
+          /* border: solid 1px green; */
+          margin: 0 8px;
+         height: 100px;
+         flex-grow: 1; 
+        }
+        .item22>h4{
+          /* border: solid 1px yellow; */
+          padding-bottom: 7px;
+          color: rgb(73, 71, 71);
+          font-size: 23px;
+          border-bottom: rgb(73, 71, 71) 1px solid;
+        }
+        .item22>.nnav{
+          display: flex;
+          flex-direction: column;
+        }
+        .item22>.nnav>a{
+          color: white;
+          text-decoration: none;
+          padding-bottom: 5px;
+        }
+        .item22>.nnav>a:hover{
+          color: rgb(82, 14, 128);
+            transform: scaleX(1.1);
+            transition: .3s;
+        }
+
+        .pagination li{
+            margin: 0 2px;}
+        .page-link{
+            border: none;
+        }
+        
+        form{
+          display: flex;
+        }
+        form input:focus{
+          outline: none;
+        }
+        button{
+          color: #000000;
+	        background-color: #381857; 
+        }
+        input,button{
+            border: none;
+            padding: 6px;
+        }
+        footer{
+          width: 100%;
+          height: 30px;
+          display: flex;
+          /* justify-content: center; */
+          align-items: center;
+          padding: 5px; 
+          color: rgb(70, 69, 69);
+          margin:10px 55px 0 0;
+          border-top:  rgb(73, 71, 71) 1px solid;
+        }
+        /* 蓋版廣告 */
+        .full-screen{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .full-screen .textSeen{
+          /* background-color: white; */
+          /* color: deeppink; */
+          background-clip: text;
+          -webkit-background-clip: text;
+          font-weight: 900;
+          font-family: Helvetica;
+          background-image: url(./img/極光.jpeg); 
+          /* background-image: url(https://i.gifer.com/muV.gif); */
+          background-size: contain;
+          -webkit-text-fill-color:transparent ;
+          font-size: 90px;
+          text-align: center;
+        }
+        .full-screen .text{
+            width: 90%;
+            max-width:500px;
+            height: 300px;
+            max-height: 80%;
+            background-color: rgb(255, 255, 255); 
+            padding: 20px; 
+            position: relative;
+            box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+            /* background-clip: text;
+            -webkit-text-fill-color:transparent ; */
+            background-color: rgb(70, 44, 121);
+        }
+        .full-screen .close{
+            /* background-color: #fff; */
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        /* .bd-example{
+          border:  1px red solid;
+        } */
+        
+        /* .bd-example{ 
+          border:  2px red solid;
+          width: 100%;
+          height: 500px;
+        } */
+        /* .container-fluidd .aa{
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: repeat(6,1fr);
+            width: 450px;
+            border: 5px rgb(118, 42, 240) solid;
+            position: absolute;
+        } */
+        
+    </style>
+</head>
+<body>
+    <div class="container-fluidd">
+         
+        <div class="head">
+            <img src="./img/header_img.jpeg" alt="" class="headimg">
+            <h1>LAKE SHOW SQUAD</h1>
+            <p>17x Champions, get to know your 2020-21 Lakers team.
+            </p>
+        </div>
+        <div class="navbar fixed-top">
+            <a href="#" class="logo">
+                <img src="./img/lakers_logo_.webp" alt="">
+            </a>
+            <label for="burger"><i class="fa fa-bars" aria-hidden="true"></i></label>
+            <input type="checkbox" id="burger">
+            <nav class="navtop">
+                <a href="#player" class="beef" alt="球員介紹">球員介紹</a>
+                <a href="#histore" class="beef" alt="球隊歷史沿革">球隊歷史沿革</a>
+                <a href="#coach" class="beef" alt="教練團">教練團</a>
+                <a href="./pagination-2.html" class="beef" alt="商品周邊">商品周邊</a>
+            </nav>
+            <div class="side"><h5>LAKE SHOW</h5></div>
+        </div>
+
+        <!-- 球員介紹欄 -->
+        <div class="wrap" id="player">
+          <div class="tony">
+            <img src="./img/Kostas.png" alt="" style="border-bottom: solid 1px rgb(82, 80, 80);">
+            <div class="txt">
+              <h6>HEIGHT / 207公分</h6>
+              <h6>POSITION / 大前鋒</h6>
+              <h6>DATEOFBIRTH / 11/20/1997</h6>
+              <h6>FROM / 希臘雅典</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/2.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 203公分</h6>
+              <h6>POSITION / 大前鋒</h6>
+              <h6>DATEOFBIRTH / 10/08/1996</h6>
+              <h6>FROM / 美國伊利諾伊州芝加哥</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/3.png" alt="" >
+            <div class="txt">
+              <h6>HEIGHT / 196公分</h6>
+              <h6>POSITION / 控球後衛</h6>
+              <h6>DATEOFBIRTH / 02/18/1993</h6>
+              <h6>FROM / 美國佐治亞湯瑪斯敦</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/4.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 196公分</h6>
+              <h6>POSITION / 控球後衛</h6>
+              <h6>DATEOFBIRTH / 02/28/1994</h6>
+              <h6>FROM / 美國德克薩斯大學城</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/5.png" alt="" style="border-bottom: solid 1px rgb(82, 80, 80);">
+            <div class="txt">
+              <h6>HEIGHT / 208公分</h6>
+              <h6>POSITION / 中鋒</h6>
+              <h6>DATEOFBIRTH / 03/11/1993</h6>
+              <h6>FROM / 美國伊利諾伊州芝加哥</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/6.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 211公分</h6>
+              <h6>POSITION / 中鋒</h6>
+              <h6>DATEOFBIRTH / 08/10/1993</h6>
+              <h6>FROM / 美國紐約弗農山</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/7.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 201公分</h6>
+              <h6>POSITION / 小前鋒</h6>
+              <h6>DATEOFBIRTH / 07/10/1985</h6>
+              <h6>FROM / 美國加利福尼亞聖地亞哥</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/8.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 211公分</h6>
+              <h6>POSITION / 中鋒</h6>
+              <h6>DATEOFBIRTH / 01/29/1985</h6>
+              <h6>FROM / 西班牙巴塞隆拿</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/9.png" alt="" style="border-bottom: solid 1px rgb(82, 80, 80);">
+            <div class="txt">
+              <h6>HEIGHT / 201公分</h6>
+              <h6>POSITION / 中鋒</h6>
+              <h6>DATEOFBIRTH / 01/26/1994</h6>
+              <h6>FROM / 美國北卡羅來納Tarboro</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/10.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 193公分</h6>
+              <h6>POSITION / 前鋒</h6>
+              <h6>DATEOFBIRTH / 11/25/2000</h6>
+              <h6>FROM / 美國伊利諾伊州芝加哥</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/11.png" alt="" style="border-bottom: solid 1px rgb(82, 80, 80);">
+            <div class="txt">
+              <h6>HEIGHT / 206公分</h6>
+              <h6>POSITION / 小前鋒</h6>
+              <h6>DATEOFBIRTH / 12/30/1984</h6>
+              <h6>FROM / 美國俄亥俄州阿克倫</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/12.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 208公分</h6>
+              <h6>POSITION / 小前鋒</h6>
+              <h6>DATEOFBIRTH / 07/24/1995</h6>
+              <h6>FROM / 美國密西根弗林特</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/13.png" alt="" style="border-bottom: solid 1px rgb(82, 80, 80);">
+            <div class="txt">
+              <h6>HEIGHT / 196公分</h6>
+              <h6>POSITION / 小前鋒</h6>
+              <h6>DATEOFBIRTH / 10/14/1986</h6>
+              <h6>FROM / 美國德克薩斯聖安東尼奧</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/14.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 203公分</h6>
+              <h6>POSITION / 小前鋒</h6>
+              <h6>DATEOFBIRTH / 09/17/1992</h6>
+              <h6>FROM / 美國伊利諾伊州芝加哥</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/15.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 191公分</h6>
+              <h6>POSITION / 得分後衛</h6>
+              <h6>DATEOFBIRTH / 02/11/1993</h6>
+              <h6>FROM / 美國密蘇里州聖路易斯</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/16.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 203公分</h6>
+              <h6>POSITION / 大前鋒</h6>
+              <h6>DATEOFBIRTH / 09/02/1989</h6>
+              <h6>FROM / 美國賓夕凡尼亞費城</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/17.png" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 201公分</h6>
+              <h6>POSITION / 後衛</h6>
+              <h6>DATEOFBIRTH / 09/15/1993</h6>
+              <h6>FROM / 德國不倫瑞克</h6>
+            </div>
+          </div>
+          <div class="tony">
+            <img src="./img/kobee.jpeg" alt="">
+            <div class="txt">
+              <h6>HEIGHT / 201公分</h6>
+              <h6>POSITION / 後衛</h6>
+              <h6>DATEOFBIRTH / 08/23/1978</h6>
+              <h6>FROM / 美國賓夕凡尼亞費城</h6>
+            </div>
+          </div>
+        </div>
+         
+        <!-- <div class="aa">
+            <div class="a1">Height</div>
+            <div class="a2"></div>
+            <div class="a3">6′10″</div>
+            <div class="a4">Position</div>
+            <div class="a5"></div>
+            <div class="a6">Forward</div>
+            <div class="a7">Date of birth</div>
+            <div class="a8"></div>
+            <div class="a9">11/20/1997</div>
+            <div class="a10">YearsPro</div>
+            <div class="a11"></div>
+            <div class="a12">2</div>
+            <div class="a13">WEIGHT</div>
+            <div class="a14"></div>
+            <div class="a15">200LBS</div>
+            <div class="a16">FROM</div>
+            <div class="a17"></div>
+            <div class="a18">DAYTON/GREECE
+            </div>
+        </div> -->
+        <div class="bd-example" >
+          <div id="carouselExampleCaptions" class="carousel slide gg" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="6"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="7"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="8"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="9"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="10"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="11"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="12"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="13"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="14"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="15"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="16"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="17"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="18"></li>
+              </ol>
+              <!-- ./img/a1.jpeg -->
+              
+              <div class="carousel-inner">
+                <div class="carousel-item ">
+                  <img src="./img/背景 拷貝.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>KostasAntetokounmpo</h4>
+                    <h6>我已經決定開啟我的人生和籃球生涯的新篇章。我想感謝戴頓大學和隊友們以及所有同學對我的支持！我會永遠為自己成為戴頓大學的一員感到驕傲！.</h6>
+                  </div>
+                </div>
+                <div class="carousel-item ">
+                  <img src="./img/a2拷貝.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Devontae Cacok</h4>
+                    <h6>雖然身高不高（203公分），但卻擁有強悍的球風且出色的運動能力，且在球場上都非常的拼命，他將是湖人隊未來的淺力新秀</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a3拷貝.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Kentavious Caldwell-Pope</h4>
+                    <h6>在湖人的這3個球季，在225場出賽中，繳出場均11.4分3.4籃板1.7助攻成績。上季季後賽在Avery Bradley沒有參加復賽的情況下，幫助湖人奪下10年來的第1個冠軍</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a4拷貝.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Alex Caruso</h4>
+                    <h6>質疑多於讚賞的 Caruso 最終難逃落選的命運，但或許造成他落選原因，或許也是因為對他來說，「在正確的時機做出正確的判斷」比「成為鎂光燈的焦點」更重要</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a5.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Anthony Davis</h4>
+                    <h6>我想要贏球，所以我不在乎我得幾分，只有我們贏了那才是最重要的</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a6.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Andre Drummond</h4>
+                    <h6>效力NBA洛杉磯湖人。他是2011年高中籃球獲評價最高的籃球員之一，我仍然期待他心態面的滿血回歸</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a7.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Jared Dudley</h4>
+                    <h6>是 LeBron「欽點」的球員，因為他能起到熱火時期 Juan Howard 一樣的更衣室領袖作用。他有出色的於言能力，滔滔不絕，吸引隊友、教練、管理層、記者、觀眾</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a8.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Marc Gasol</h4>
+                    <h6>命運是很奇妙的。Marc Gasol在哥哥Pau Gasol一舉成名的城市曼菲斯裡磨鍊成長，走出了屬於自己的一條康莊大道，如今又來到了哥哥曾經奮戰退敵、留下傲人的榮耀的另一座城市洛杉磯</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/montrezl-harrell.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Montrezl Harrell</h4>
+                    <h6>發雞湯文：當你擁有的時候，要懂得珍惜時間和真愛</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a10.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Talen Horton-Tucker</h4>
+                    <h6>剛滿20歲不久的湖人小將Talen Horton-Tucker，THT擁有不錯的運球能力，能創造自己的得分機會。傳球視野不差，能抓下防守籃板後第一時間轉換快攻</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a11.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>LeBron James</h4>
+                    <h6>恩，我跟他打過球擊過掌</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/kk.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Kyle Kuzma</h4>
+                    <h6>你要認真打球了嗎？</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a13.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Wesley Matthew</h4>
+                    <h6>身高190公，現年35歲，是球隊不可或缺的板凳深度來源</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a14.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Alfonzo McKinnie</h4>
+                    <h6>出生於美國芝加哥伊利諾州，身高205公分，現年28歲</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a15.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Ben McLemore</h4>
+                    <h6>NBA高順位被棄用的搖擺人不可勝數，但能在生涯第七年找回自我，重新證明自己身價的球員可以說是寥寥無幾。 Ben McLemore就是這麼一號人物</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a16.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Markieff Morris</h4>
+                    <h6>身高/體重: 6' 8"/245 lbs生日: 1989年9月2日 Philadelphia, Pennsylvania</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/a17.jpg" class="d-block m-auto">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Dennis Schroder</h4>
+                    <h6>嗯嗯，簽約金不成正比</h6>
+                  </div>
+                </div>
+                <div class="carousel-item active">
+                  <img src="./img/kobe-bryant-getty-022720-ftrjpg_133gft6g4mxsu1jg75nkkmcln6.jpeg" class="d-block w-100">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Kobe Bryant</h4>
+                    <h6 class="bg-dark text-white rounded-pill" >我的放棄和堅持，都與你有關</h6>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/new player.png" class="d-block w-100">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>PROGRESS</h4>
+                    <h6 class=" text-white " >籃球不問你從哪裡來，只問你付出了多少</h6>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          </div>
+        </div>
+
+
+        <!-- 教練團 -->
+        <div class="myCoach" id="coach">
+          <img src="./img/教練團.png" alt="" class="staff w-100 h-100 mycoimg" style="object-fit: contain;">
+        </div>
+
+        <div class="container-fluid">
+          <div class="row row-cols-md-3 row-cols-lg-4" style="margin-top: 50px;">
+            <div class="col-md  rounded " id="co1">
+              <div class="apple">
+                <img src="./img/co1.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Frank Vogel (Head Coach)</h5>
+                <h8>從默默無名、註冊學生人數不到200人的懷爾德伍德高中畢業，一路拼搏至今成為湖人隊的總教練，在總冠軍杯的耀眼光芒照射下，低調樸實、總愛把自己埋在眾多影片裡專注分析、把焦點全留給球員們的Vogel，才是湖人隊本賽季季後賽裡銳不可當的關鍵元素。</h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg" id="co2">
+              <div class="apple">
+                <img src="./img/co2.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Jason Kidd (Assistant Coach)</h5>
+                <h8>在執教 2020 年 NBA 冠軍洛杉磯湖人隊之前，賈森·基德在 2014-18 賽季擔任密爾沃基雄鹿隊的主教練，創造了 139-152 的戰績。在加盟密爾沃基之前，基德在 2013-14 賽季擔任布魯克林籃網隊的主教練，帶領球隊取得 44-38 的戰績，同時獲得兩項東部聯盟月度最佳教練獎。</h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co3">
+              <div class="apple">
+                <img src="./img/co3.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Lionel Hollins(Assistant Coach)</h5>
+                <h8>作為孟菲斯灰熊隊和布魯克林籃網隊的主教練，萊昂內爾·霍林斯擁有 262-272 的職業生涯戰績，並自 2015-16 賽季以來首次重返 NBA 替補席，隨湖人隊獲得 2020 年 NBA 總冠軍。</h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co4">
+              <div class="apple">
+                <img src="./img/co4.jpeg" alt="" class="img-fluid">
+                <h5 style="font-weight: bolder; color: white;">Phil Handy (Assistant Coach)</h5>
+                <h8>在成為 2020 年 NBA 冠軍教練組成員之前，菲爾漢迪曾擔任多倫多猛龍隊的助理教練，在克利夫蘭騎士隊（2013-18 賽季）擔任了五個賽季之後。總的來說，他執教了過去六次總決賽，分別在 2020 年、2019 年和 2016 年隨湖人隊、猛龍隊和騎士隊奪得總冠軍。作為聖萊安德羅本地人，漢迪在 2011-13 賽季擔任助理教練後重返湖人隊。 </h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co5">
+              <div class="apple">
+                <img src="./img/co5.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Miles Simon (Assistant Coach)</h5>
+                <h8>他在球隊的場上發展和比賽準備中發揮了關鍵作用。西蒙在拉斯維加斯夏季聯賽的最後兩場比賽中都執教過湖人隊，晉級到 2018 年的總冠軍賽。他之前曾在美國隊工作，自 2015 年以來一直擔任耐克籃球學院的主任，同時還在 ESPN 擔任大學籃球分析師。 </h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co6">
+              <div class="apple">
+                <img src="./img/co6.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Mike Penberthy (Assistant Coach)</h5>
+                <h8>在加入 2019-20 賽季湖人隊教練組之前，邁克·彭伯西曾在新奧爾良鵜鶘隊效力了兩個賽季。他之前曾擔任過一些聯盟頂尖人才的私人教練，並在 2014-15 賽季擔任明尼蘇達森林狼隊的助理教練。Penberthy從2000-02賽季為湖人隊效力了兩個賽季，並且是2001年冠軍隊的一員。 </h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co7">
+              <div class="apple">
+                <img src="./img/co7.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Quinton Crawford (Assistant Coach)</h5>
+                <h8>昆頓克勞福德擔任黃蜂隊 2018-19 賽季的首席視頻協調員/球員發展教練，並在 2017-18 賽季為奧蘭多魔術隊擔任相同的角色，此前他在奧蘭多擔任助理視頻協調員 2016-17 賽季。他畢業於亞利桑那大學，獲得佩珀代因大學教育學碩士學位。</h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co8">
+              <div class="apple">
+                <img src="./img/co8.jpeg" alt="" class="img-fluid">
+                <h5 style="font-weight: bolder; color: white;">Greg St. Jean (Player Development Coach/Advance Scout)</h5>
+                <h8>Greg St. Jean 在聖約翰大學擔任了四個賽季的助理教練，主要管理球探、比賽準備、球員發展和視頻運營。在加盟皇后區之前，St. Jean 是 2013-15 賽季薩克拉門托國王隊球員發展和視頻團隊的成員，2012 年是新澤西籃網隊的籃球運營暑期實習生。  </h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co9">
+              <div class="apple">
+                <img src="./img/co9.jpeg" alt="">
+                <h5 style="font-weight: bolder; color: white;">Dru Anthrop (Head Video Coordinator/Player Development Coach)</h5>
+                <h8>德魯·安斯羅普加入了湖人隊。2016-18賽季，他在魔術師沃格爾手下擔任主教練特別助理和助理視頻協調員。Anthrop 還在聖約翰大學擔任研究生助理一個賽季，並在 2013-15 賽季為印第安納步行者隊擔任籃球電影協調實習生。</h8>
+              </div>
+            </div>
+            <div class="col-md rounded rounded-lg " id="co10">
+              <div class="apple">
+                <img src="./img/co10.jpeg" alt="" class="img-fluid">
+                <h5 style="font-weight: bolder; color: white;">Jon Pastorek  (Assistant Video Coordinator/Player Development Coach)</h5>
+                <h8>喬恩·帕斯托克 (Jon Pastorek) 回歸湖人隊的第四個賽季，也是他作為助理視頻協調員/球員發展教練的第三個賽季。他協助球隊的比賽日準備和場上發展，最近是 2019 年夏季聯賽教練組的成員。 </h8>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- 聚光燈 -->
+        <div class="spotlight" id="histore">
+          <h1 data-spotlight="RoadtoChampion!">RoadtoChampion</h1>
+        </div>
+
+        <!-- 球隊歷史 -->
+        <div class="mywrap">
+          <div class="fixed topic1"></div>
+          <div class="wrap-2">
+              <!-- item 1  -->
+              <div class="item">
+                  <div class="pic">
+                      <img src="./img/champion-1.png">
+                  </div>
+                  <div class="txt">
+                      <h5>NBL時代與NBA早期（1946–1979)</h5>
+                      <h6>底特律寶石（Detroit Gems）是一支成立於1946年的國家籃球聯盟（NBL）籃球隊，在隔年1947年解散。球隊解散的這一年，Ben Berger和Morris Chalfen以15000美元向球隊老闆買下該隊的經營權，並將球隊主場遷至明尼蘇達州明尼亞波利斯，而明尼蘇達被稱作「萬湖之州」，所以將隊名命名為明尼亞波利斯湖人（Minneapolis Lakers），隸屬於國家籃球聯盟（NBL），而此隊即為洛杉磯湖人（LAL）的前身。</h6>
+                  </div>
+              </div>
+              <!-- item 2  -->
+              <div class="item">
+                  <div class="txt">
+                      <h5>（George Mikan）</h5>
+                      <h6>由於寶石隊是前一賽季中成績最差的球隊，因此繼承的湖人隊獲得第一名選秀權。球隊成功地選入優秀的中鋒喬治·麥肯（George Mikan），為之後1950年代的第一代湖人王朝奠下基礎。約翰·庫達爾擔任了球隊的首任總教練，在喬治·麥肯、約翰·庫達爾和一名前明尼蘇達大學籃球隊球員的帶領下，湖人隊順利地在首個賽季就贏得1948年NBL總冠軍。</h6>
+                  </div>
+                  <div class="pic">
+                      <img src="./img/champion-2.png">
+                  </div>
+              </div>
+              <!-- item 3  -->
+              <div class="item">
+                  <div class="pic">
+                      <img src="./img/champion-3.png">
+                  </div>
+                  <div class="txt">
+                      <h5>(三巨頭時期)</h5>
+                      <h6>隨後的幾個賽季，貝勒與韋斯特的組合越發默契。1968-69賽季，湖人隊迎來了曾單場砍下100分的威爾特·張伯倫，球隊實力再次提升。但是由於當時另外一支豪門球隊波士頓凱爾特人隊的存在，他們在球隊主力中鋒比爾·拉塞爾的帶領下，屢次在季後賽中阻擊湖人隊。這期間湖人隊共7次進入總決賽，但全部獲得亞軍，其中有6次是輸給凱爾特人，另外1次則是輸給了紐約尼克斯。</h6>
+                  </div>
+              </div>
+              <!-- item 4  -->
+              <div class="item">
+                  <div class="txt">
+                      <h5>(Wilton Norman Chamberlain)</h5>
+                      <h6>1957-58賽季，湖人遭遇災難性賽季。麥肯被說服擔任球隊主教練，但他缺乏經驗，前39場僅率領湖人贏下9場。之後湖人雖有所變動，但最終仍一頹到底，以19勝53負的戰績草草結束了常規賽，排名西部墊底。這是湖人隊史首次無緣季後賽，也是在明尼阿波利斯的唯一一次 。</h6>
+                  </div>
+                  <div class="pic">
+                      <img src="./img/champion-4.png">
+                  </div>
+              </div>
+          </div> 
+      
+          <div class="fixed topic2"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-5.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4> 1971-73</h4>
+                      <h2>33 In A Row!</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>湖人贏69場比賽，紀錄保持24年之久，直到芝加哥公牛隊（1995-96）贏得72場比賽之後。張伯倫場均14.8分，但是籃板19.2個。傑瑞·威斯特每場比賽9.7次助攻領先全聯盟，場均超過25分，被評為1972年NBA全明星賽最有價值球員。洛杉磯湖人全年只有一次未能得分超過100分，在賽季結束後，比爾·夏曼被評為年度最佳教練。洛杉磯湖人決賽對紐約尼克，並以4-1擊敗該隊。張伯倫贏得NBA總決賽最有價值球員獎。張伯倫幫洛杉磯湖人隊拿到第一個冠軍。</h6>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="fixed topic3"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-6.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4> 1979</h4>
+                      <h2>The Beginning Of The Buss Era</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>在1979年NBA選秀大會上，湖人選走控球後衛魔術強森，從此開始了湖人隊80年代的showtime王朝。當時，魔術強森帶領紫金軍團9度叩關總冠軍賽，5度登基。
+                          這個時代除了魔術強森之外，湖人還有「天勾」卡里姆·阿布都·賈霸和詹姆士·沃錫、貝倫·史考特。</h6>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="fixed topic4"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-8.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4> 1991-92</h4>
+                      <h2>Magic Shocks The World</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>1988-89年湖人在總冠軍賽因傷兵問題遭到剃光頭，明星中鋒賈霸也在球季結束後宣布退休。1991-92年魔術強森感染愛滋病，震驚全球，隨後也宣布退休。</h6>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="fixed topic5"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-9.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4> 1999-2000</h4>
+                      <h2>Return to Dominance</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>1999-2000年球季，湖人得到前公牛教練菲爾·傑克森加盟，迅速令球隊表現回勇，以67勝15負的成績成為西區第一，並闖入季後賽。該年亦是歐尼爾生涯最佳的表現，取得29.7分、13.6籃板。該季季後賽，洛杉磯湖人先後擊敗沙加緬度國王、鳳凰城太陽及波特蘭拓荒者，取得西區冠軍。其中對上拓荒者，一共激戰7場，並且在第7場最後一節以落後15分的情況下反敗為勝，成為NBA季後賽史上經典的一役。最後在總冠軍賽中，以4:2擊敗了印第安那溜馬，取得自1988年以後的第一個總冠軍。歐尼爾也取得生涯首座總冠軍賽MVP。</h6>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="fixed topic6"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-10.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4> 2009-10</h4>
+                      <h2>Back-to-Back</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>2008-09賽季，湖人以例行賽65勝17敗取得西區第一、全聯盟第二的戰績，挺進季後賽[8]。湖人以五場、七場和六場打敗猶他爵士、休士頓火箭和丹佛金塊，贏得西區總冠軍。總決賽以4比1擊敗奧蘭多魔術[9]。柯比·布萊恩獲得生涯首座FMVP[10]。</h6>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="fixed topic7"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-11.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4> 2012-13</h4>
+                      <h2>Lakers Season Review</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>2014–15賽季第一場比賽，2014年NBA選秀第7順位朱利葉斯·蘭德爾因小腿受傷賽季報銷。柯比·布萊恩打了35場，便因肩膀受傷而結束賽季。尼克·楊因膝蓋受傷賽季報銷，此時球隊戰績為14勝41敗。正規賽剩餘27場比賽，史考特給予2014年NBA選秀第46順位喬丹·克拉克森更多上場時間。喬丹·克拉克森的菜鳥年成績為11.9分、3.2籃板、3.5助攻和投籃命中率44.8%[41]。湖人以例行賽21勝61敗結束賽季，為聯盟倒數第四以及隊史最差戰績。
+                          2015–16賽季，湖人在2015年NBA選秀取得第二順位，選擇來自俄亥俄州立大學的德安傑洛·羅蘇[42]。                  
+                          11月30日，柯比·布萊恩宣布賽季結束後他將高掛球鞋。柯比·布萊恩的最後一個賽季，湖人以例行賽17勝65敗戰績，連續三年錯過季後賽，並為隊史最差戰績。
+                          </h6>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="fixed topic8"></div>
+      
+          <div class="wrap-3">
+              <div class="item-2">
+                  <div class="pic">
+                      <img src="./img/champion-12.webp" alt="">
+                  </div>
+                  <div class="txt-tit">
+                      <h4>2020-21</h4>
+                      <h2>Lakers Season Review</h2>
+                  </div>
+                  <div class="txt-In">
+                      <h6>22019–2020：安東尼·戴維斯加盟，打造出LA連線，並攜手獲得第17座總冠軍
+                          2019年6月16日，湖人將朗佐·鮑爾、布蘭登·英格倫、喬許·哈特和三個首輪選秀權（包括2019年的第四順位選秀權）交易到紐奧良鵜鶘，換來安東尼·戴維斯，並打造出雷霸龍·詹姆士（LeBron James）和安東尼·戴維斯（Anthony Davis）的LA連線時代。
+                          </h6>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- 頁數欄 -->
+        <nav aria-label="Page navigation example" class="">
+          <ul class="pagination justify-content-end">
+           <li class="page-item"><a class="page-link bg-dark" href="#">Previous</a></li>
+           <li class="page-item active"><a class="page-link " href="#">1</a></li>
+           <li class="page-item"><a class="page-link bg-dark" href="./Carousel.html">2</a></li>
+           <li class="page-item"><a class="page-link bg-dark" href="#">3</a></li>
+           <li class="page-item"><a class="page-link bg-dark" href="#">Next</a></li>
+          </ul>
+        </nav>
+
+        <a href="#" class="topp"><svg  width="60px" height="50px"  xmlns="http://www.w3.org/2000/svg" name="zi_pathUp" viewBox="0 0 2000 2000"><path d="M968 595l544 784q28 28 28 68t-28 68l-92 88q-28 28-68 28t-64-28l-388-584-384 584q-28 28-68 28t-68-28l-92-88q-28-28-28-68t28-68l544-784q28-28 68-28t68 28z"></svg></a>
+          
+        
+          
+          <div class="main-footer">
+           <div class="cat">
+             <div class="item22">
+               <h4>比賽日</h4>
+               <nav class="nnav">
+                 <a href="">注意事項</a>
+                 <a href="">比賽紀錄</a>
+                 <a href="">受傷報告</a>
+                 <a href="">湖人女孩</a>
+                 <a href="">購票事宜</a>
+               </nav>
+             </div>
+             <div class="item22">
+               <h4>社交媒體</h4>
+               <nav class="nnav">
+                 <a href="">社交中心</a>
+                 <a href="">推特</a>
+                 <a href="">Instagram</a>
+                 <a href="">Facebook</a>
+                 <a href="">湖人電子郵件</a>
+               </nav>
+             </div>
+             <div class="item22">
+               <h4>播放相關</h4>
+               <nav class="nnav">
+                 <a href="">哪裡收看收聽</a>
+                 <a href="">日程</a>
+                 <a href="">廣播公司</a>
+                 <a href="">聯盟通行證</a>
+                 <a href="">主播</a>
+               </nav>
+             </div>
+             <div class="item22">
+               <h4>訂閱電子報</h4>
+               <form action="">
+                 <input type="search">
+                 <button><svg  width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg" name="zi_searchBlack" viewBox="0 0 2000 2000"><path d="M1772 1860l-106 106q-26 27-64 27t-65-27l-235-223q-27-27-27-65v-61q-212 167-485 167-216 0-396.5-106T107 1392Q1 1212 1 995.5T107 599q106-180 286.5-286.5T790 206q216 0 396 106.5T1472.5 599Q1579 779 1579 995q0 274-167 486h61q38 0 64 26l235 224q27 27 27 65t-27 64zm-511-856q0-130-65-239.5t-174.5-175Q912 524 781.5 524t-240 65.5q-109.5 65.5-175 175t-65.5 240q0 130.5 65.5 240t175 175q109.5 65.5 240 65.5t240-65.5q109.5-65.5 174.5-175t65-240.5z"/></svg></button>
+               </form>
+             </div>
+           </div>
+           <footer>NBA.com 是 Turner Sports Digital 的一部分，Turner Sports & Entertainment Digital Network 。</footer>
+          </div>
+     </div> 
+     
+     
+     
+      <!-- 蓋板廣告 -->
+     <div class="full-screen">
+      <div class="text">
+        <div class="textSeen">
+          LAKERS START
+        </div>
+          <a href="#" class="close"><svg  class="closee" width="2rem" height="2rem" xmlns="http://www.w3.org/2000/svg" name="zi_circleCancel" viewBox="0 0 2000 2000"><path d="M900 210q-241 0-445 121-205 120-325 324Q10 860 10 1100q0 241 120 445 120 205 325 325 204 120 445 120 240 0 445-120 204-120 324-325 121-204 121-445 0-240-121-445-120-204-324-324-205-121-445-121zm0 1608q-194 0-359-97t-262-262q-97-165-97-359t97-359q97-165 262-262 165-96 359-96 193 0 359 96 165 97 261 262 97 165 97 359t-97 359q-96 165-261 262-166 97-359 97zm366-940l-223 222 223 223q10 14 10 32t-10 29l-83 82q-11 11-29 11-17 0-32-11l-222-222-223 222q-14 11-32 11t-29-11l-82-82q-11-11-11-29t11-32l222-223-222-222q-11-15-11-33 0-17 11-28l82-83q11-11 29-11t32 11l223 223 222-223q15-11 32-11 18 0 29 11l83 83q10 11 10 28 0 18-10 33z"/></svg></a>
+
+          
+        
+     </div>
+
+    <script>
+       $(function(){
+         //蓋板廣告
+           $('.close').click(function(){
+               $('.full-screen').fadeOut();
+           })
+       })
+
+       //導覽列隱藏
+      $(function(){
+          $.extend({
+              'goAnchor': function(to, time) {
+                  $obj = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+                  $($obj).animate({
+                      scrollTop: to
+                  }, time);
+                }
+          });
+      })
+      var bodyClass = document.body.classList,
+            lastScrollY = 0;
+        window.addEventListener('scroll', function(){
+            var st = this.scrollY;
+            /* 判斷是向上捲動，而且捲軸超過 200px */
+            if( st < lastScrollY) {
+                bodyClass.remove('hideUp');
+            } else {
+                bodyClass.add('hideUp');
+            }
+            lastScrollY = st;
+        });
+
+
+        // 滾輪滾動顯示ＴＯＰ
+        $(function () {
+
+        var $win = $(window);
+
+        var $backToTop = $('.topp');
+
+        // 當用戶滾動到離頂部100像素時，展示回到頂部按鈕
+
+        $win.scroll(function () {
+        
+        if ($win.scrollTop() > 100) {
+        
+        $backToTop.fadeIn();
+        
+        } else {
+        
+        $backToTop.hide();
+        
+        }
+
+        });
+
+        // 當用戶點擊按鈕時，通過動畫效果返回頭部
+
+        $backToTop.click(function () {
+        
+        $('html, body').animate({scrollTop: 0}, 400);
+        
+        });
+
+        });
+    </script>     
+        
+</body>
+</html>
